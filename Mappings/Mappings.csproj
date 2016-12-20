@@ -1,0 +1,114 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{7D9ACBB5-285C-4BE2-B751-9EA1C05FCE07}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Mappings</RootNamespace>
+    <AssemblyName>Mappings</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Ninject, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ninject.3.2.2.0\lib\net45-full\Ninject.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Aggregator.cs" />
+    <Compile Include="CrossCutting\BootstrapperMappings.cs" />
+    <Compile Include="CrossCutting\ConfigurationMappings.cs" />
+    <Compile Include="CrossCutting\EventAggregatorMappings.cs" />
+    <Compile Include="Data\DataStoringMappings.cs" />
+    <Compile Include="Logic\PersonMangementMappings.cs" />
+    <Compile Include="NinjectModuleExtensions.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\Bootstrapper.Contract\Bootstrapper.Contract.csproj">
+      <Project>{279FDF1E-34F5-426C-887F-62BAF45B4581}</Project>
+      <Name>Bootstrapper.Contract</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Bootstrapper\Bootstrapper.csproj">
+      <Project>{508B78EE-741C-4829-BEA0-7CA064817E00}</Project>
+      <Name>Bootstrapper</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Configuration.Contracts\Configuration.Contracts.csproj">
+      <Project>{062E43EF-740D-4129-9EA3-1DEB7136471F}</Project>
+      <Name>Configuration.Contracts</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Configuration.InMemory\Configuration.InMemory.csproj">
+      <Project>{68B74215-682F-474D-ABD4-73DDAA36C6F8}</Project>
+      <Name>Configuration.InMemory</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DataClasses\DataClasses.csproj">
+      <Project>{8DAD510A-BF62-411E-908D-B2FB60B37DEC}</Project>
+      <Name>DataClasses</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DataStoring.Contract\DataStoring.Contract.csproj">
+      <Project>{E8097884-703F-4337-91D9-48252860C9FA}</Project>
+      <Name>DataStoring.Contract</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DataStoring.CSV\DataStoring.CSV.csproj">
+      <Project>{DB5266D8-2F43-4DC4-BF1F-6E31D4CEC56A}</Project>
+      <Name>DataStoring.CSV</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EventAggregation.Contract\EventAggregation.Contract.csproj">
+      <Project>{ACBED0D3-366D-4296-998B-2BAFA67C1E81}</Project>
+      <Name>EventAggregation.Contract</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EventAggregation\EventAggregation.csproj">
+      <Project>{35A7F5C2-5B6C-4FF9-A6BB-DD0B75E543E1}</Project>
+      <Name>EventAggregation</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PersonManagement.Contract\PersonManagement.Contract.csproj">
+      <Project>{FF82AE5F-FF4A-46F7-8B04-E0A9B9DFFC56}</Project>
+      <Name>PersonManagement.Contract</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PersonManagement\PersonManagement.csproj">
+      <Project>{B82D2814-4CB4-4CD2-AECB-023C7A6B8AE0}</Project>
+      <Name>PersonManagement</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
